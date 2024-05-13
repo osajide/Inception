@@ -1,0 +1,81 @@
+version: "3.7"
+services:
+  nginx:
+    build: requirements/nginx/
+    image: nginx:ssl
+    volumes:
+      - web-vol:/var/www/html/
+      - adminer-vol:/var/www/html/adminer
+    ports:
+      - 443:443
+      - 8080:8080
+    networks:
+      - inception
+    depends_on:
+      - wordpress
+    restart: always
+
+  wordpress:
+    build: requirements/wordpress/
+    image: wordpress:fpm7.4
+    volumes:
+      - web-vol:/var/www/html/
+    env_file:
+      - .env
+    networks:
+      - inception
+    depends_on:
+      - mariadb
+    restart: always
+
+  mariadb:
+    build: requirements/mariadb/
+    image: mariadb:1.0
+    volumes:
+      - db-vol:/var/lib/mysql
+    networks:
+      - inception
+    env_file:
+      - .env
+    restart: always
+
+  redis:
+    build: requirements/bonus/redis/
+    image: redis:cache
+    networks:
+      - inception
+    restart: always
+  adminer:
+    build: requirements/bonus/adminer/
+    image: adminer:db
+    networks:
+      - inception
+    volumes:
+      - adminer-vol:/var/www/html/adminer/
+    restart: always
+  ftp:
+    build: requirements/bonus/ftp/
+    image: ftp:vs
+    ports:
+      - 8181:21
+    restart: always
+
+volumes:
+  web-vol:
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/osajide/data/website
+  db-vol:
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/osajide/data/mysql
+  adminer-vol:
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/osajide/data/adminer
+
+networks:
+  inception:
