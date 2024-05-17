@@ -5,14 +5,15 @@ services:
     image: nginx:ssl
     volumes:
       - web-vol:/var/www/html/
-      - adminer-vol:/var/www/html/adminer
     ports:
       - 443:443
       - 8080:8080
+      - 9191:9191
     networks:
       - inception
     depends_on:
       - wordpress
+      - mysite
     restart: always
 
   wordpress:
@@ -51,13 +52,29 @@ services:
     networks:
       - inception
     volumes:
-      - adminer-vol:/var/www/html/adminer/
+      - web-vol:/var/www/html/
     restart: always
   ftp:
     build: requirements/bonus/ftp/
     image: ftp:vs
     ports:
       - 8181:21
+    restart: always
+  grafana:
+    build: requirements/bonus/grafana/
+    image: grafana:monitor
+    ports:
+      - 3000:3000
+    networks:
+      - inception
+    restart: always
+  mysite:
+    build: requirements/bonus/mysite/
+    image: mysite:py
+    volumes:
+      - web-vol:/var/www/html/
+    networks:
+      - inception
     restart: always
 
 volumes:
@@ -71,11 +88,6 @@ volumes:
       type: none
       o: bind
       device: /home/osajide/data/mysql
-  adminer-vol:
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/osajide/data/adminer
 
 networks:
   inception:
