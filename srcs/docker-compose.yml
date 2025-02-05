@@ -1,4 +1,3 @@
-version: "3.7"
 services:
   nginx:
     build: requirements/nginx/
@@ -93,15 +92,7 @@ services:
 
 volumes:
   web-vol:
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/osajide/data/website
   db-vol:
-    driver_opts:
-      type: none
-      o: bind
-      device: /home/osajide/data/mysql
 
 networks:
   inception:
