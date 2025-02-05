@@ -55,3 +55,14 @@ The **bonus part** enhances the core infrastructure by adding the following **fi
 ✔️ **Grafana for real-time monitoring and visualization**.  
 ✔️ **Secure FTP access for file management**.  
 ✔️ **Static website served via Python HTTP server**.
+
+
+---
+
+## 🚀 Usage  
+
+### 1️⃣ Clone the Repository  
+```bash
+git clone https://github.com/osajide/Inception.git
+cd Inception
+make
