@@ -121,7 +121,7 @@ Grafana will be accessible at:
 ```bash
 http://localhost:3000
 ```
-###  Accessing the Static Website
+### 7️⃣ Accessing the Static Website
 A simple static website is served using the Python `http.server` module, with NGINX acting as a reverse proxy to forward requests to the Python HTTP server.
 You can access the static website at:
 ```bash
