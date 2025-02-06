@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -xe
+
 service mariadb start
 
 mariadb -e "create database $DB_NAME;
