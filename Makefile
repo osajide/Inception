@@ -2,11 +2,8 @@
 all:
 	@docker compose -f srcs/docker-compose.yml up -d
 
-start:
-	@docker compose -f srcs/docker-compose.yml up -d
-
-stop:
-	@docker compose -f srcs/docker-compose.yml down
+build:
+	@docker compose -f srcs/docker-compose.yml up -d --build
 
 clean:
 	@docker compose -f srcs/docker-compose.yml down
@@ -16,7 +13,6 @@ fclean:
 
 restart:	clean all
 
-reset:	fclean
-	@docker compose -f srcs/docker-compose.yml up -d --build
+reset:	fclean build
 
-.PHONY: all start stop clean fclean restart reset
+.PHONY: all build clean fclean restart reset
