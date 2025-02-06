@@ -109,8 +109,8 @@ Once the `make` command has been successfully executed, the WordPress site will 
 https://localhost
 ```
 ### ❗Important:
-1. After running the make command, please wait until the WordPress setup script completes. If you access the site too early, you may encounter a "Bad Gateway" error. The setup process can take a few moments to finish, so please be patient and try again once the containers are fully up and running.
-2. Since the NGINX container is configured with a self-signed SSL certificate, you may receive a security warning in your browser. This is expected and can be safely bypassed for testing purposes. Simply proceed by clicking on the option to continue to the website.
+1. After running the `make` command, please wait until the WordPress setup script completes. If you access the site too early, you may encounter a "Bad Gateway" error. The setup process can take a few moments to finish, so please be patient and try again once the containers are fully up and running.
+2. Since the **NGINX** container is configured with a self-signed SSL certificate, you may receive a security warning in your browser. This is expected and can be safely bypassed for testing purposes. Simply proceed by clicking on the option to continue to the website.
 ### 5️⃣ Accessing Adminer
 Adminer will be accessible at:
 ```bash
