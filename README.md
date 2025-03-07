@@ -83,7 +83,7 @@ DB_NAME=wp_database
 
 # Wordpress
 
-WP_URL=tempurl
+WP_URL=localhost (same as the request HOST header)
 WP_TITLE=inception
 ADMIN_WP_USER=admin
 ADMIN_WP_PASS=admin
