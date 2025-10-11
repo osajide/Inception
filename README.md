@@ -125,4 +125,4 @@ http://localhost:3000
 A simple static website is served using the Python `http.server` module, with NGINX acting as a reverse proxy to forward requests to the Python HTTP server.
 You can access the static website at:
 ```bash
-http://localhost:8000
+http://localhost:9191
